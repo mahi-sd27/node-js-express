@@ -1,5 +1,18 @@
-var http = require("http");
-http.createServer(function(req,res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Aloha world');
-}).listen(process.env.PORT || 3000);
+var express = require('express');
+
+var app = express();
+const PORT = 3000;
+
+app.set('view engine','ejs');//sent views to EJS
+
+//this is how a route is built in Express
+app.get('/', (req,res)=>{
+  var title = "Our Home Page";
+  res.render('index',{title:title});
+});
+
+app.listen(PORT,()=>{
+  console.log(`App is running on port ${PORT}`);
+});
+
+
